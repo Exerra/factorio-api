@@ -37,9 +37,9 @@ app.use(swagger({
 app.use(players)
 
 app.derive(async ({ headers, request }) => {
-	console.log(new URL(request.url).pathname)
 
 	if (new URL(request.url).pathname.startsWith("/swagger")) return {}
+	if (new URL(request.url).pathname == "/") return {}
 
 	const host = headers["x-factorio-host"] as string
 	const port = headers["x-factorio-port"] as string
